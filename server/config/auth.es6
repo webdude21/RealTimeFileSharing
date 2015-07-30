@@ -21,9 +21,6 @@ module.exports = {
 
         auth(req, res, next);
     },
-    loginWithFacebook: function () {
-        passport.authenticate('facebook');
-    },
     logout: function (req, res, next) {
         req.logout();
         next();

@@ -1,7 +1,8 @@
 var express = require('express'),
     env = process.env.NODE_ENV || 'development',
     app = express(),
-    config = requre('./server/config/config')[env];
+    config = require('./server/config/config')[env],
+    socketio = require('socket.io')(app);
 
 require('./server/config/express')(app, config);
 require('./server/config/mongoose')(config);

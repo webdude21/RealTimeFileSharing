@@ -9,6 +9,10 @@ module.exports = function (app) {
         return res.redirect('/');
     });
 
+    app.get('/', function (req, res) {
+        return res.render('index', { currentUser: req.user });
+    });
+
     app.get('*', function (req, res) {
         return res.render('not-found', { currentUser: req.user });
     });
