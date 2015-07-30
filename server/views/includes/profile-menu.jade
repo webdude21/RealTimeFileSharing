@@ -1,0 +1,16 @@
+ul.nav.navbar-nav.navbar-right
+    if !currentUser
+        li
+            a(href="/register") Регистрация
+        li
+            a(href="/login") Вход
+    else
+        li.dropdown
+            a.dropdown-toggle(href="", data-toggle="dropdown")
+                | #{currentUser.username}
+                span.caret
+            ul.dropdown-menu
+                li
+                    a(href="/profile") Моят профил
+                li
+                    a(href="/logout") Изход

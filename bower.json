@@ -1,0 +1,25 @@
+{
+  "name": "realtimefiletransfer",
+  "version": "0.0.1",
+  "authors": [
+    "Димо Петров <webdude@webdude.eu>"
+  ],
+  "description": "Enable sending files through the browser",
+  "main": "index.js",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.1.x",
+    "bootstrap": "^3.x.x"
+  }
+}

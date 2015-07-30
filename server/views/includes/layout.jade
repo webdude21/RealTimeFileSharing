@@ -1,0 +1,34 @@
+doctype
+html
+    head
+        title RealTimeFileSharing
+        link(rel="stylesheet" href="/styles/build.min.css")
+        meta(name="viewport" content="initial-scale=1")
+        block page-styles
+    body
+        div#fb-root
+        header.nav.navbar-default.navbar-fixed-top
+            .container
+                .navbar-header
+                    a.navbar-brand(href="/") RealTimeFileSharing
+                    button(type="button" class="navbar-toggle", data-toggle="collapse", data-target=".navbar-collapse")
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                include menu
+        .container
+            br
+            if errorMessage
+                .alert.alert-dismissible.alert-danger #{errorMessage}
+                    button.close(data-dismiss="alert") ×
+            if successMessage
+                .alert.alert-dismissible.alert-success #{successMessage}
+                    button.close(data-dismiss="alert") ×
+            block main-content
+        footer
+            hr
+            p.text-center
+                span
+                    a(href="http://webdude.eu/") Created by webdude
+        include scripts
