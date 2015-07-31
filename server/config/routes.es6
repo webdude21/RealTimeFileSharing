@@ -1,9 +1,7 @@
 'use strict';
 var routes = require('../routes');
 
-module.exports = function (_ref) {
-    var app = _ref.app;
-
+module.exports = function ({app}) {
     routes.usersRoute(app);
     routes.defaultRoute(app);
 };

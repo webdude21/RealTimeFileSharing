@@ -12,7 +12,10 @@ var express = require('express'),
     messageHandler = require('../utilities/message-handler'),
     middleware = require('../middleware');
 
-module.exports = function (app, config) {
+module.exports = function (_ref) {
+    var app = _ref.app;
+    var config = _ref.config;
+
     app.use(compression());
     app.set('view engine', 'jade');
     app.set('views', config.rootPath + '/server/views');

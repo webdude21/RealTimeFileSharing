@@ -1,6 +1,8 @@
 'use strict';
 
-module.exports = function (io) {
+module.exports = function (_ref) {
+	var io = _ref.io;
+
 	io.on('connection', function (socket) {
 		socket.on('message', function (from, msg) {
 
