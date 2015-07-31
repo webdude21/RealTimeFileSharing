@@ -1,5 +1,4 @@
 'use strict';
-/*eslint-disable dot-notation*/
 var crypto = require('crypto');
 
 module.exports = {
