@@ -28,7 +28,7 @@ module.exports = function (grunt) {
             js: {
                 files: {
                     '.tmp/min/scripts/build.min.js': '.tmp/concat/scripts/build.js',
-                    '.tmp/min/socket/socket.min.js': '.tmp/concat/scripts/socket.js'
+                    '.tmp/min/scripts/socket.min.js': '.tmp/concat/scripts/socket.js'
                 }
             }
         },
@@ -52,7 +52,8 @@ module.exports = function (grunt) {
             },
             js: {
                 files: {
-                    '<%= project.build %>/scripts/build.min.js': '.tmp/min/scripts/build.min.js'
+                    '<%= project.build %>/scripts/build.min.js': '.tmp/min/scripts/build.min.js',
+                    '<%= project.build %>/scripts/socket.min.js': '.tmp/min/scripts/socket.min.js'
                 }
             },
             css: {
