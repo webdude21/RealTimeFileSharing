@@ -13,7 +13,8 @@ module.exports = function (grunt) {
             js: {
                 files: {
                     '.tmp/concat/scripts/build.js': ['<%= project.app %>/scripts/**/*.js',
-                        '<%= project.app %>/vendor/**/*.js']
+                        '<%= project.app %>/vendor/**/*.js'],
+                    '.tmp/concat/scripts/socket.js': ['<%= project.app %>/socket/**/*.js']
 
                 }
             },
@@ -26,7 +27,8 @@ module.exports = function (grunt) {
         uglify: {
             js: {
                 files: {
-                    '.tmp/min/scripts/build.min.js': '.tmp/concat/scripts/build.js'
+                    '.tmp/min/scripts/build.min.js': '.tmp/concat/scripts/build.js',
+                    '.tmp/min/socket/socket.min.js': '.tmp/concat/scripts/socket.js'
                 }
             }
         },

@@ -1,13 +1,14 @@
-var express = require('express'),
+var app = require('express')(),
     env = process.env.NODE_ENV || 'development',
-    app = express(),
+    httpServer = require('http').createServer(app),
     config = require('./server/config/config')[env],
-    socketio = require('socket.io')(app);
+    io = require('socket.io').listen(httpServer);
 
 require('./server/config/express')(app, config);
 require('./server/config/mongoose')(config);
 require('./server/config/passport')(config.port);
 require('./server/config/routes')(app);
+require('./server/config/socket')(io);
 
-app.listen(config.port);
+httpServer.listen(config.port);
 console.log("Server running on port: " + config.port);
