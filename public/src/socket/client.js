@@ -1,5 +1,6 @@
-(function (io, socketStream, $) {
-    var socket = io('http://localhost:3000');
+(function (io, socketStream, $, window, Blob) {
+    var socket = io(window.location.host);
+
     socket.on('connect', function () {
     });
     socket.on('hi', function (data) {
@@ -34,5 +35,5 @@
             uploadFileToTheServer(event.target.files[0]);
         });
     });
-}(io, ss, $));
+}(io, ss, $, window, Blob));
 
