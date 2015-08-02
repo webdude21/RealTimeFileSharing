@@ -1,4 +1,4 @@
-(function (io, socketStream, $, window, eventHandlers) {
+(function (io, socketStream, $, window, eventHandlers, Object) {
     var socket = io(window.location.host);
 
     Object.keys(eventHandlers.socket).forEach(function (event) {
@@ -20,5 +20,5 @@
             uploadFileToTheServer(event.target.files[0]);
         });
     });
-}(io, ss, $, window, realTimeFileSharing.eventHandlers));
+}(io, ss, jQuery, window, realTimeFileSharing.eventHandlers, Object));
 
