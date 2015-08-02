@@ -16,7 +16,7 @@ module.exports = function (grunt) {
                     '.tmp/concat/scripts/build.js': ['<%= project.app %>/scripts/**/*.js',
                         '<%= project.app %>/vendor/**/*.js'],
                     '.tmp/concat/scripts/socket.js': ['<%= project.app %>/socket-stream/**/*.js',
-                        '<%= project.app %>/socket/**/*.js']
+                        '<%= project.app %>/socket/event-handlers.js', '<%= project.app %>/socket/client-config.js']
 
                 }
             },
