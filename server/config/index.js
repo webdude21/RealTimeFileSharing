@@ -5,4 +5,5 @@ module.exports = function (applicationConfig) {
     require('./passport')();
     require('./routes')(applicationConfig);
     require('./socket')(applicationConfig);
+    require('./roles');
 };

@@ -2,27 +2,19 @@ extends ../includes/layout
 block main-content
     .well
         fieldset
-            legend Регистриране на Участник
+            legend Изпращане на файл
             .form-group
-                label.col-md-2.control-label(for="full-name") Имена
+                label.col-md-2.control-label(for="comment") ID на потребителя
                 .col-md-10
-                    input.form-control(type="text", id="full-name",
-                    placeholder="Иван Георгиев Димитров", name="fullName", required)
+                    input.form-control(type="text", id="comment",
+                    placeholder="номер на потребителя който ще получи файла", name="comment")
             .form-group
-                label.col-md-2.control-label(for="age") Възраст
-                .col-md-10
-                    input.form-control(type="text", id="age", placeholder="6 месеца", name="age", required)
-            .form-group
-                label.col-md-2.control-label(for="comment") Коментар
-                .col-md-10
-                    input.form-control(type="text", id="comment", placeholder="optional comment", name="comment")
-            .form-group
-                label.col-md-2.control-label(for="file-0") Снимка
+                label.col-md-2.control-label(for="file-0") Файл
                 .col-md-10
                     input.form-control.upload-picture(id="file", type="file")
             #button-panel
                 .pull-right
-                    input.btn.btn-primary(type="submit", value="Регистрация")
+                    input.btn.btn-primary(type="submit", value="Изпращане")
                     a.btn.btn-primary(href="/") Отказ
 block page-scripts
     include ../includes/socket-scripts
