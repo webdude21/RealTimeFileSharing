@@ -15,6 +15,7 @@ var express = require('express'),
 module.exports = function (_ref) {
     var app = _ref.app;
     var config = _ref.config;
+    var staticCacheAge = _ref.staticCacheAge;
 
     app.use(compression());
     app.set('view engine', 'jade');
@@ -25,7 +26,7 @@ module.exports = function (_ref) {
     app.use(session({ secret: secretPassPhrase, saveUninitialized: true, resave: true }));
     app.use(passport.initialize());
     app.use(passport.session());
-    app.use(express['static'](config.rootPath + STATIC_DIRECTORY));
+    app.use(express['static'](config.rootPath + STATIC_DIRECTORY, { maxAge: staticCacheAge }));
     app.use(morgan('combined'));
     app.use(function (req, res, next) {
         return messageHandler(req, res, next, app);
