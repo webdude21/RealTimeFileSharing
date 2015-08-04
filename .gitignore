@@ -147,7 +147,6 @@ publish/
 *.pubxml
 
 # NuGet Packages Directory
-##
 packages/
 
 # Windows Azure Build Output
