@@ -17,6 +17,8 @@ module.exports = function ({io}) {
         allSockets.push(socket);
         clientsUpdate(true, socket, io);
 
+        socket.emit('get-my-user-info', socket.id);
+
         socket.on('disconnect', function () {
             var socketIndex = allSockets.indexOf(socket);
             if (socketIndex > -1) {
@@ -25,15 +27,11 @@ module.exports = function ({io}) {
             clientsUpdate(true, socket, io);
         });
 
-        socketStream(socket).on('file-upload', function (stream, {size, name}) {
-            var outputStream = socketStream.createStream();
+        socketStream(socket).on('file-upload', function (stream, {size, name}, clientId) {
+            var outputStream = socketStream.createStream(),
+                clientToSendTheFileTo = allSockets.find(socket => socket.id === clientId);
             stream.pipe(outputStream);
-
-            allSockets.forEach(function (clientSocket) {
-                if (clientSocket !== socket) {
-                    socketStream(clientSocket).emit('file-receive', outputStream, {size, name, mime});
-                }
-            });
+            socketStream(clientToSendTheFileTo).emit('file-receive', outputStream, {size, name, mime});
         });
     });
 };

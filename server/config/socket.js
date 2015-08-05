@@ -21,6 +21,8 @@ module.exports = function (_ref) {
         allSockets.push(socket);
         clientsUpdate(true, socket, io);
 
+        socket.emit('get-my-user-info', socket.id);
+
         socket.on('disconnect', function () {
             var socketIndex = allSockets.indexOf(socket);
             if (socketIndex > -1) {

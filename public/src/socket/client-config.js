@@ -8,16 +8,26 @@
         socketStream(socket).on(event, eventHandlers.socketStream[event]);
     });
 
-    function uploadFileToTheServer(file) {
+    function uploadFileToTheServer(file, clientId) {
         var stream = socketStream.createStream();
-        socketStream(socket).emit('file-upload', stream, {size: file.size, name: file.name});
+        socketStream(socket).emit('file-upload', stream, {size: file.size, name: file.name}, clientId);
         socketStream.createBlobReadStream(file).pipe(stream);
     }
 
     $(function () {
-        var $fileInput = $('#file');
-        $fileInput.change(function (event) {
-            uploadFileToTheServer(event.target.files[0]);
+        var $fileInput = $('#file'),
+            $fileSubmitButton = $('#file-send-btn');
+
+        $fileSubmitButton.click(function (event) {
+            var file = $fileInput.files[0];
+
+            if (file) {
+                uploadFileToTheServer(file)
+            } else {
+                alert('Моля изберете файл преди да го изпратите');
+            }
+
+            return false;
         });
     });
 }(io, ss, jQuery, window, realTimeFileSharing.eventHandlers, Object));

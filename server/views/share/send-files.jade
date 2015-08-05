@@ -14,7 +14,7 @@ block main-content
                     input.form-control.upload-picture(id="file", type="file")
             #button-panel
                 .pull-right
-                    input.btn.btn-primary(type="submit", value="Изпращане")
+                    input.btn.btn-primary(type="submit" id="file-send-btn", value="Изпращане")
                     a.btn.btn-primary(href="/") Отказ
 block page-scripts
     include ../includes/socket-scripts

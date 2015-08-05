@@ -5,5 +5,8 @@ var CONTROLLER_NAME = 'share';
 module.exports = {
     getFileShare: function getFileShare(req, res) {
         res.render(CONTROLLER_NAME + '/send-files');
+    },
+    receiveFile: function receiveFile(req, res) {
+        res.render(CONTROLLER_NAME + '/file-receive');
     }
 };

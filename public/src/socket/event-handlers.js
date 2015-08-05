@@ -5,6 +5,9 @@ realTimeFileSharing.eventHandlers = (function (window, Blob, $) {
             },
             'disconnect': function () {
             },
+            'get-my-user-info': function (connectionId) {
+                $('#connection').val(connectionId);
+            },
             'update-user-info': function (clients) {
                 var $table = $('.users'),
                     tableContent = '';

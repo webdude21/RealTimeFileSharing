@@ -1,0 +1,20 @@
+extends ../includes/layout
+block main-content
+    .well
+        fieldset
+            legend Получаване на файл
+            .form-group
+                label.col-md-2.control-label(for="connection") Вашият номер
+                .col-md-10
+                    input.form-control(type="text", id="connection",
+                    placeholder="вашият номер", name="connection")
+            hr
+            .form-group
+                div.progress.progress-striped.active.col-md-12
+                    div.progress-bar#file-upload-progress-bar(style="width: 0%")
+            #button-panel
+                .pull-right
+                    input.btn.btn-primary(type="submit" id="file-send-btn", value="Изпращане")
+                    a.btn.btn-primary(href="/") Отказ
+block page-scripts
+    include ../includes/socket-scripts
