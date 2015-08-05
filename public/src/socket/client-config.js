@@ -10,7 +10,7 @@
 
     function uploadFileToTheServer(file, clientId) {
         var stream = socketStream.createStream();
-        socketStream(socket).emit('file-upload', stream, {size: file.size, name: file.name}, clientId);
+        socketStream(socket).emit('file-upload', stream, {size: file.size, name: file.name, client: clientId});
         socketStream.createBlobReadStream(file).pipe(stream);
     }
 
@@ -19,12 +19,15 @@
             $fileSubmitButton = $('#file-send-btn');
 
         $fileSubmitButton.click(function (event) {
-            var file = $fileInput.files[0];
+            var file = $fileInput[0].files[0],
+                clientId = $('#comment').val();
 
-            if (file) {
-                uploadFileToTheServer(file)
-            } else {
+            if (!file) {
                 alert('Моля изберете файл преди да го изпратите');
+            } else if (!clientId) {
+                alert('Моля изберете потребител на който да пратите файла');
+            } else {
+                uploadFileToTheServer(file, clientId);
             }
 
             return false;

@@ -34,15 +34,24 @@ module.exports = function (_ref) {
         socketStream(socket).on('file-upload', function (stream, _ref2) {
             var size = _ref2.size;
             var name = _ref2.name;
+            var client = _ref2.client;
 
-            var outputStream = socketStream.createStream();
-            stream.pipe(outputStream);
+            var outputStream = socketStream.createStream(),
+                clientToSendTheFileTo = null;
 
-            allSockets.forEach(function (clientSocket) {
-                if (clientSocket !== socket) {
-                    socketStream(clientSocket).emit('file-receive', outputStream, { size: size, name: name, mime: mime });
+            allSockets.some(function (item) {
+                if (item.id === client) {
+                    clientToSendTheFileTo = item;
+                    return true;
                 }
             });
+
+            if (!clientToSendTheFileTo) {
+                return;
+            }
+
+            stream.pipe(outputStream);
+            socketStream(clientToSendTheFileTo).emit('file-receive', outputStream, { size: size, name: name, mime: mime });
         });
     });
 };

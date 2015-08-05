@@ -27,9 +27,21 @@ module.exports = function ({io}) {
             clientsUpdate(true, socket, io);
         });
 
-        socketStream(socket).on('file-upload', function (stream, {size, name}, clientId) {
+        socketStream(socket).on('file-upload', function (stream, {size, name, client}) {
             var outputStream = socketStream.createStream(),
-                clientToSendTheFileTo = allSockets.find(socket => socket.id === clientId);
+                clientToSendTheFileTo = null;
+
+            allSockets.some(function (item) {
+                if (item.id === client) {
+                    clientToSendTheFileTo = item;
+                    return true;
+                }
+            });
+
+            if (!clientToSendTheFileTo) {
+                return;
+            }
+
             stream.pipe(outputStream);
             socketStream(clientToSendTheFileTo).emit('file-receive', outputStream, {size, name, mime});
         });
