@@ -1,12 +1,19 @@
 var realTimeFileSharing = {};
-realTimeFileSharing.eventHandlers = (function (window, Blob) {
+realTimeFileSharing.eventHandlers = (function (window, Blob, $) {
     var socketHandlers = {
             'connect': function () {
             },
-            'hi': function (data) {
-                console.log('Hi from ' + data);
-            },
             'disconnect': function () {
+            },
+            'update-user-info': function (clients) {
+                var $table = $('.users'),
+                    tableContent = '';
+
+                clients.forEach(function (socket, index) {
+                    tableContent += '<tr class="info"><td>' + (index + 1) + '</td><td>' + socket + '</td></tr>';
+                });
+
+                $table.html(tableContent);
             }
         },
         socketStreamHandlers = {
@@ -27,4 +34,4 @@ realTimeFileSharing.eventHandlers = (function (window, Blob) {
         socket: socketHandlers,
         socketStream: socketStreamHandlers
     };
-}(window, Blob));
+}(window, Blob, jQuery));

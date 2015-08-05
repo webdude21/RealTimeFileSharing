@@ -3,11 +3,14 @@
 var socketStream = require('socket.io-stream'),
     mime = 'application/octet-stream',
     allSockets = [],
-    printUserInfo = function printUserInfo(hasLoggedIn, socket) {
+    clientsUpdate = function clientsUpdate(hasLoggedIn, socket, io) {
     var socketIndex = allSockets.indexOf(socket);
     console.log('User ' + (hasLoggedIn ? 'connected' : 'disconnected'));
     console.log('There are ' + allSockets.length + ' users online');
 
+    io.emit('update-user-info', allSockets.map(function (client) {
+        return client.id;
+    }));
     return socketIndex;
 };
 
@@ -16,16 +19,14 @@ module.exports = function (_ref) {
 
     io.on('connection', function (socket) {
         allSockets.push(socket);
-
-        printUserInfo(true, socket);
-        io.emit('hi', socket.id);
+        clientsUpdate(true, socket, io);
 
         socket.on('disconnect', function () {
             var socketIndex = allSockets.indexOf(socket);
             if (socketIndex > -1) {
                 allSockets.splice(socketIndex, 1);
             }
-            printUserInfo(false, socket);
+            clientsUpdate(true, socket, io);
         });
 
         socketStream(socket).on('file-upload', function (stream, _ref2) {

@@ -1,3 +1,10 @@
-//
-   Created by webdude on 05.08.15.
-
+extends ../includes/layout
+block main-content
+    table.table.table-striped.table-hover
+        thead
+            tr
+                th #
+                th Потребителско име
+        tbody.users
+block page-scripts
+    include ../includes/socket-scripts
