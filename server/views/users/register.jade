@@ -6,35 +6,34 @@ block main-content
             fieldset
                 legend Регистрация
                 .form-group
-                    label.col-md-2.control-label(for="first-name") Име
+                    label.col-md-2.control-label(for="first-name") First name
                     .col-md-10
-                        input.form-control(type="text", id="first-name",
-                        placeholder="Име", name="firstName", required)
+                        input.form-control(type="text", id="first-name", placeholder="John",
+                        name="firstName", required)
                 .form-group
-                    label.col-md-2.control-label(for="last-name") Фамилия
+                    label.col-md-2.control-label(for="last-name") Last name
                     .col-md-10
-                        input.form-control(type="text", id="last-name"
-                        placeholder="Фамилия", name="lastName", required)
+                        input.form-control(type="text", id="last-name", placeholder="Doe",
+                        name="lastName", required)
                 .form-group
-                    label.col-md-2.control-label(for="username") Потребителско име
+                    label.col-md-2.control-label(for="username") Username
                     .col-md-10
                         input.form-control(type="text", id="username",
-                        placeholder="Потребителско име", name="username", required)
+                        placeholder="Username", name="username", required)
                 .form-group
                     label.col-md-2.control-label(for="email-address") Email
                     .col-md-10
                         input.form-control(type="email", id="email-address",
-                        placeholder="твоят@email.com", name="email", required)
+                        placeholder="john.doe@email.com", name="email", required)
                 .form-group
-                    label.col-md-2.control-label(for="password") Парола
+                    label.col-md-2.control-label(for="password") Password
                     .col-md-10
-                        input.form-control(type="password", id="password",
-                        placeholder="Парола", name="password", required)
+                        input.form-control(type="password", id="password", placeholder="Password", name="password")
                 .form-group
-                    label.col-md-2.control-label(for="confirm-password") Потвърждаване на паролата
+                    label.col-md-2.control-label(for="confirmPassword") Confirm password
                     .col-md-10
-                        input.form-control(type="password", id="confirm-password",
-                        placeholder="Парола", name="confirmPassword", required)
+                        input.form-control(type="password", id="confirmPassword",
+                        placeholder="Password", name="confirmPassword")
                 .pull-right
-                    input.btn.btn-primary(type="submit", value="Регистрация")
-                    a.btn.btn-primary(href="/") Отказ
+                    input.btn.btn-primary(type="submit", value="Register")
+                    a.btn.btn-primary(href="/") Cancel

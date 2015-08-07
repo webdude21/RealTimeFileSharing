@@ -1,9 +1,9 @@
 ul.nav.navbar-nav.navbar-right
     if !currentUser
         li
-            a(href="/register") Регистрация
+            a(href="/register") Register
         li
-            a(href="/login") Вход
+            a(href="/login") Login
     else
         li.dropdown
             a.dropdown-toggle(href="", data-toggle="dropdown")
@@ -11,6 +11,6 @@ ul.nav.navbar-nav.navbar-right
                 span.caret
             ul.dropdown-menu
                 li
-                    a(href="/profile") Моят профил
+                    a(href="/profile") Profile
                 li
-                    a(href="/logout") Изход
+                    a(href="/logout") Logout

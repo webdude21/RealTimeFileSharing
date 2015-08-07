@@ -1,5 +1,10 @@
 var realTimeFileSharing = {};
 realTimeFileSharing.eventHandlers = (function (window, Blob, $) {
+    function updateProgressBar($progressBar, currentProgress, total) {
+        $progressBar.width(Math.floor(currentProgress / total * 100) + '%');
+        return currentProgress
+    }
+
     var socketHandlers = {
             'connect': function () {
             },
@@ -21,9 +26,12 @@ realTimeFileSharing.eventHandlers = (function (window, Blob, $) {
         },
         socketStreamHandlers = {
             'file-receive': function (upcomingStream, fileInfo) {
-                var resultBlob = new Blob([], {type: fileInfo.mime});
+                var resultBlob = new Blob([], {type: fileInfo.mime}),
+                    $progressBar = $('#file-download-progress-bar'),
+                    currentProgress = 0;
 
                 upcomingStream.on('data', function (data) {
+                    currentProgress = updateProgressBar($progressBar, currentProgress + data.length, fileInfo.size);
                     resultBlob = new Blob([resultBlob, data], {type: fileInfo.mime});
                 });
 

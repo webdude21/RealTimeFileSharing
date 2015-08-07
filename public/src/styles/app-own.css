@@ -1,6 +1,5 @@
 body {
   margin-top: 80px;
-  padding: 0;
 }
 body img {
   max-width: 100%;
@@ -17,4 +16,12 @@ body #toast-container {
 }
 body a.edit-action {
   display: block;
+}
+body .form-control {
+  margin-bottom: 1rem;
+}
+body .progress {
+  margin-top: 1rem;
+  padding: 0;
+  height: 2rem;
 }

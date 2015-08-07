@@ -3,26 +3,26 @@ block main-content
     .well
         form.form-horizontal(name="signUpForm" method="post")
             fieldset
-                legend Обновяване на профила
+                legend Profile update
                 .form-group
-                    label.col-md-2.control-label(for="first-name") Име
+                    label.col-md-2.control-label(for="first-name") First name
                     .col-md-10
-                        input.form-control(type="text", id="first-name", placeholder="Име",
+                        input.form-control(type="text", id="first-name", placeholder="John",
                         name="firstName", required, value="#{firstName}")
                 .form-group
-                    label.col-md-2.control-label(for="last-name") Фамилия
+                    label.col-md-2.control-label(for="last-name") Last name
                     .col-md-10
-                        input.form-control(type="text", id="last-name", placeholder="Фамилия",
+                        input.form-control(type="text", id="last-name", placeholder="Doe",
                         name="lastName", required value="#{lastName}")
                 .form-group
-                    label.col-md-2.control-label(for="password") Парола
+                    label.col-md-2.control-label(for="password") Password
                     .col-md-10
-                        input.form-control(type="password", id="password", placeholder="Парола", name="password")
+                        input.form-control(type="password", id="password", placeholder="Password", name="password")
                 .form-group
-                    label.col-md-2.control-label(for="confirmPassword") Потвърждаване на паролата
+                    label.col-md-2.control-label(for="confirmPassword") Confirm password
                     .col-md-10
                         input.form-control(type="password", id="confirmPassword",
-                        placeholder="Парола", name="confirmPassword")
+                        placeholder="Password", name="confirmPassword")
                 .pull-right
-                    input.btn.btn-primary(type="submit", value="Обновяване")
-                    a.btn.btn-primary(href="/") Отказ
+                    input.btn.btn-primary(type="submit", value="Update")
+                    a.btn.btn-primary(href="/") Cancel

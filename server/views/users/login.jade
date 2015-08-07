@@ -4,18 +4,18 @@ block main-content
     .well
         form.form-horizontal(name="loginForm", method="post")
             fieldset
-                legend Вход
+                legend Login
                 .form-group
-                    label.col-md-2.control-label(for="username") Потребителско име
+                    label.col-md-2.control-label(for="username") Username
                     .col-md-10
                         input.form-control(type="text", id="username",
                         placeholder="Потребителско име", name="username", required)
                 .form-group
-                    label.col-md-2.control-label(for="password") Парола
+                    label.col-md-2.control-label(for="password") Password
                     .col-md-10
                         input.form-control(type="password", id="password",
                         placeholder="Парола", name="password", required)
                 hr
                 .pull-right
-                    input.btn.btn-primary(type="submit", value="Вход")
-                    a.btn.btn-primary(href="/") Отказ
+                    input.btn.btn-primary(type="submit", value="Login")
+                    a.btn.btn-primary(href="/") Cancel
