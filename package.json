@@ -4,7 +4,7 @@
   "description": "Enable sending files through the browser",
   "main": "index.js",
   "scripts": {
-    "postinstall": "grunt build"
+    "postinstall": "npm install && grunt build"
   },
   "repository": {
     "type": "git",
@@ -30,8 +30,7 @@
     "passport-facebook": "^1.0.3",
     "passport-local": "^1.0.0",
     "socket.io": "^1.3.6",
-    "socket.io-stream": "^0.8.0",
-    "stream.io": "0.0.0"
+    "socket.io-stream": "^0.8.0"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
