@@ -4,7 +4,7 @@
   "description": "Enable sending files through the browser",
   "main": "index.js",
   "scripts": {
-    "postinstall": "bower install && grunt build"
+    "postinstall": "grunt build"
   },
   "repository": {
     "type": "git",
