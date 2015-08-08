@@ -1,19 +1,15 @@
 'use strict';
 module.exports = function (req, res, next, app) {
+    var errorTypes = ['errorMessage', 'successMessage', 'warningMessage'],
+        processMessage = function (messageKey) {
+            if (req.session[messageKey]) {
+                app.locals[messageKey] = req.session[messageKey];
+                req.session[messageKey] = undefined;
+            } else {
+                app.locals[messageKey] = undefined;
+            }
+        };
 
-    if (req.session.errorMessage) {
-        app.locals.errorMessage = req.session.errorMessage;
-        req.session.errorMessage = undefined;
-    } else {
-        app.locals.errorMessage = undefined;
-    }
-
-    if (req.session.successMessage) {
-        app.locals.successMessage = req.session.successMessage;
-        req.session.successMessage = undefined;
-    } else {
-        app.locals.successMessage = undefined;
-    }
-
+    errorTypes.forEach(processMessage);
     next();
 };

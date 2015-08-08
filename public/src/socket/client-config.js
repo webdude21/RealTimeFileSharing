@@ -9,16 +9,23 @@
     });
 
     function uploadFileToTheServer(file, clientId) {
-        var stream = socketStream.createStream();
+        var stream = socketStream.createStream(),
+            $progressBar = $('#file-upload-progress-bar'),
+            currentProgress = 0;
+
         socketStream(socket).emit('file-upload', stream, {size: file.size, name: file.name, client: clientId});
         socketStream.createBlobReadStream(file).pipe(stream);
+
+        stream.on('data', function (data) {
+            currentProgress = eventHandlers.updateProgressBar($progressBar, currentProgress + data.length, file.size);
+        });
     }
 
     $(function () {
         var $fileInput = $('#file'),
             $fileSubmitButton = $('#file-send-btn');
 
-        $fileSubmitButton.click(function (event) {
+        $fileSubmitButton.click(function () {
             var file = $fileInput[0].files[0],
                 clientId = $('#comment').val();
 

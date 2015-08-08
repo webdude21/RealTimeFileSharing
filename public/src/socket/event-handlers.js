@@ -43,6 +43,7 @@ realTimeFileSharing.eventHandlers = (function (window, Blob, $) {
 
     return {
         socket: socketHandlers,
-        socketStream: socketStreamHandlers
+        socketStream: socketStreamHandlers,
+        updateProgressBar: updateProgressBar
     };
 }(window, Blob, jQuery));

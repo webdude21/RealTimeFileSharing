@@ -18,13 +18,7 @@ html
                         span.icon-bar
                 include menu
         .container
-            br
-            if errorMessage
-                .alert.alert-dismissible.alert-danger #{errorMessage}
-                    button.close(data-dismiss="alert") ×
-            if successMessage
-                .alert.alert-dismissible.alert-success #{successMessage}
-                    button.close(data-dismiss="alert") ×
+            include messages
             block main-content
         footer
             hr

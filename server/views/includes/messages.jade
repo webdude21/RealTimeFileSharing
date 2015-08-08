@@ -1,0 +1,10 @@
+br
+if errorMessage
+    .alert.alert-dismissible.alert-danger #{errorMessage}
+        button.close(data-dismiss="alert") ×
+if successMessage
+    .alert.alert-dismissible.alert-success #{successMessage}
+        button.close(data-dismiss="alert") ×
+if warningMessage
+    .alert.alert-dismissible.alert-warning #{warningMessage}
+        button.close(data-dismiss="alert") ×
