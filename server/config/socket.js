@@ -9,12 +9,11 @@ var socketStream = require('socket.io-stream'),
 		io.emit('update-user-info', allSockets.map(function (client) {
 			return client.id;
 		}));
+		
 		return socketIndex;
 	};
 
-module.exports = function ({
-	io
-}) {
+module.exports = function ({ io }) {
 	io.on('connection', function (socket) {
 		allSockets.push(socket);
 		clientsUpdate(true, socket, io);
@@ -29,11 +28,7 @@ module.exports = function ({
 			clientsUpdate(true, socket, io);
 		});
 
-		socketStream(socket).on('file-upload', function (stream, {
-			size,
-			name,
-			client
-		}) {
+		socketStream(socket).on('file-upload', function (stream, { size, name, client }) {
 			var outputStream = socketStream.createStream(),
 				clientToSendTheFileTo = null;
 
@@ -49,11 +44,7 @@ module.exports = function ({
 			}
 
 			stream.pipe(outputStream);
-			socketStream(clientToSendTheFileTo).emit('file-receive', outputStream, {
-				size,
-				name,
-				mime
-			});
+			socketStream(clientToSendTheFileTo).emit('file-receive', outputStream, { size, name, mime });
 		});
 	});
 };

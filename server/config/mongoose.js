@@ -2,9 +2,7 @@
 var mongoose = require('mongoose'),
 	models = require('../models');
 
-module.exports = function ({
-	config
-}) {
+module.exports = function ({ config }) {
 	mongoose.connect(config.db);
 	var database = mongoose.connection;
 
@@ -20,3 +18,4 @@ module.exports = function ({
 
 	models.User.seedInitialUsers();
 };
+
