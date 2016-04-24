@@ -9,7 +9,7 @@ var socketStream = require('socket.io-stream'),
 		io.emit('update-user-info', allSockets.map(function (client) {
 			return client.id;
 		}));
-		
+
 		return socketIndex;
 	};
 
